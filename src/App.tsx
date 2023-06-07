@@ -11,6 +11,8 @@ const App: FC = () => {
     "きのこの山",
     "Google",
     "JavaScript",
+    "Chrome",
+    "Accessibility"
   ];
 
   return (

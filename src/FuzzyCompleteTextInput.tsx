@@ -14,11 +14,13 @@ export const FuzzyCompleteTextInput: FC<FuzzyCompleteTextInputProps> = ({
   autoCompleteWords,
   limitDistance,
 }) => {
-  const prefixLabel = "もしかして:\u{200B}";
+  // const prefixLabel = "";
+  const prefixLabel = "もしかして:";
+  const hardToInputPrefixLabel = Array.from(prefixLabel).join("\u{200B}");
 
   const removePrefixLabel = (text: string): string => {
-    if (text.startsWith(prefixLabel)) {
-      return text.slice(prefixLabel.length);
+    if (text.startsWith(hardToInputPrefixLabel)) {
+      return text.slice(hardToInputPrefixLabel.length);
     } else {
       return text;
     }
@@ -45,7 +47,7 @@ export const FuzzyCompleteTextInput: FC<FuzzyCompleteTextInputProps> = ({
       />
       <datalist id={"auto-complete"}>
         {displayCompletionWords.map((word) => (
-          <option key={word} value={`${prefixLabel}${word}`}>
+          <option key={word} value={`${hardToInputPrefixLabel}${word}`}>
             {`${value}?`}
           </option>
         ))}
